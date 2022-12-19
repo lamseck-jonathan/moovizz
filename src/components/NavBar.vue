@@ -1,6 +1,6 @@
 <template>
     <div class="border-b border-slate-900 shadow-md 
-    w-full p-5 grid grid-cols-12 gap-x-10 font-serif text-lg text-slate-200 "
+    w-full p-5 grid grid-cols-12 gap-x-10 font-serif text-lg text-indigo-200 "
     >
         <router-link
         to="/home"

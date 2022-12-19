@@ -4,7 +4,7 @@ import Navbar from '@/components/NavBar.vue'
 
 <template>
   <div class="min-w-full min-h-screen bg-slate-800">
-    <Navbar></Navbar>
+    <Navbar class="absolute"></Navbar>
     <router-view></router-view>
   </div>
 </template>
