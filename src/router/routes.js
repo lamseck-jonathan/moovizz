@@ -1,26 +1,22 @@
-import HomePage from '@/pages/HomePage.vue'
-import DetailPage from '@/pages/DetailPage.vue'
-import MainLayout from '@/layout/MainLayout.vue'
-import SecondLayout from '@/layout/SecondLayout.vue'
-
 export const routes = [
     {
         path:'/',
-        component: MainLayout,
+        component: () => import('@/layout/MainLayout.vue'),
         children:[
             {
-                path:'/',
-                component:HomePage
-            }
-        ]
-    },
-    {
-        path:'/detail',
-        component: SecondLayout,
-        children:[
+                path:'/home',
+                name:'homePage',
+                component: import('@/pages/HomePage.vue')
+            },
             {
-                path:'/',
-                component:DetailPage
+                path:'/detail/:id',
+                name:'detailPage',
+                component: import('@/pages/DetailPage.vue')
+            },
+            {
+                path:'/films',
+                name:'filmsPage',
+                component: import('@/pages/FilmsPage.vue')
             }
         ]
     }
