@@ -1,7 +1,10 @@
 <template>
-    <div class="min-h-screen flex justify-center items-center overflow-hidden bg">
+  <TransitionFade>
+    <div>
+      <div class="min-h-screen flex justify-center items-center overflow-hidden bg">
         <div class="absolute bg-netflix">
-          <img src="../assets/bg4.png"/>
+          <img class="md:block hidden" src="../assets/bg4.png"/>
+          <img class="md:hidden block" src="../assets/bg-mobile2.png"/>
         </div>
         <div class="grid gap-6 relative">
           <p class="text-4xl text-white text-center">
@@ -11,7 +14,7 @@
               Moovizz
             </span>
           </p>  
-          <p class="text-2xl text-white">
+          <p class="text-2xl text-white text-center">
             La plateforme 
             <span class="text-indigo-300">streaming</span> 
             du moment ! Trouvez vos films preférées
@@ -20,18 +23,21 @@
       </div>
       <div class="mt-4 ">
         <p class="text-white text-2xl font-semibold pl-10 pb-8">Films Populaires</p>
-          <MovieCarousel
-          :movies="popularMovies"
-          >
-          </MovieCarousel>
+        <MovieCarousel
+        :movies="popularMovies"
+        >
+        </MovieCarousel>
       </div>
       <div class="mt-4">
-          <div class="grid grid-cols-2">
-            <div class="flex flex-col items-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 ">
+            <div class="flex flex-col items-center px-4 pb-8 md:pb-0">
               <p class="text-white text-3xl font-medium pt-20">
                 Des moovizz à volontés
               </p>
-              <p class="text-center text-white text-xl pt-10">
+              <div class="block md:hidden">
+                <img src="../assets/responsive2.png"/>
+              </div>
+              <p class="text-center text-white text-xl md:pt-10">
                 Grâce à Moovizz, vous pourrez regarder vos series<br> 
                 ou films préférés ,où vous le voulez
                 , quand vous le voulez.<br>
@@ -46,12 +52,13 @@
                 S'inscrire
               </button>
             </div>
-            <div>
+            <div class="hidden md:block">
                 <img src="../assets/responsive2.png"/>
             </div>
           </div>
       </div>
-    
+    </div>
+  </TransitionFade>
 </template>
 
 <script setup>
@@ -59,7 +66,7 @@ import { getPopularMovie,getTopRatedMovie} from '@/data/MovieDb.js'
 import { movies } from '@/data/movies';
 import { ref,onBeforeMount } from 'vue';
 import MovieCarousel from '@/components/MovieCarousel.vue';
-import Carousel from '../components/Carousel.vue';
+import TransitionFade from '../components/TransitionFade.vue';
 
 const popularMovies = ref();
 const topRatedMovies = ref();
@@ -79,7 +86,7 @@ onBeforeMount(() => {
 })
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
   .bg-image{
     height: 100%;
     background-image: url('../assets/bg.png');

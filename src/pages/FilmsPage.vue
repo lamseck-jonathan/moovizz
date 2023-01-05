@@ -1,6 +1,8 @@
 <template>
     <TransitionFade>
-        <LoadingPage key="1" v-if="loading"></LoadingPage>
+        <LoadingPage key="1" v-if="loading">
+            <LoadingCircle></LoadingCircle>
+        </LoadingPage>
         <div v-else class="pt-20 pb-8">
             <MovieSection
             v-for="movie in movies" :key="movie"
@@ -13,11 +15,12 @@
 </template>
 
 <script setup>
-import { getGenres,getMoviesWithGenres } from '@/data/MovieDb.js'
+import { getMoviesWithGenres } from '@/data/MovieDb.js'
 import MovieSection from '@/components/MovieSection.vue';
 import {ref,onBeforeMount} from 'vue'
 import TransitionFade from '@/components/TransitionFade.vue';
-import LoadingPage from './LoadingPage.vue';
+import LoadingPage from '@/pages/LoadingPage.vue';
+import LoadingCircle from '@/components/LoadingCircle.vue';
 
 const loading = ref(false)
 const movies = ref([])
