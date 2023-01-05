@@ -1,15 +1,16 @@
 <template>
     <div 
-    class="rounded-lg w-40"
+    class="rounded-lg"
     :class="
     'movie-card-'+movieId,
     props.animated ? 'cursor-pointer' : ''"
     @click="detailMovie(movie.id)"
     @mouseenter="mouseEnter"
     @mouseleave="mouseLeave"
+    v-if="props.movie.backdrop_path"
     >
         <img 
-            class="rounded-lg shadow-xl" 
+            class="rounded-sm shadow-xl" 
             :src="getImage(props.movie.poster_path)"
         />
     </div>
@@ -59,4 +60,5 @@ function mouseLeave(){
 function detailMovie(id){
     router.push({name:'detailPage',params:{id: id}})
 }
+
 </script>
