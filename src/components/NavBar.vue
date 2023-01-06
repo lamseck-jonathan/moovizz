@@ -6,7 +6,7 @@
             class="col-span-2 w-fit text-4xl font-mono uppercase font-black tracking-widest ">
                 Moovizz
             </div>
-            <div class="col-span-9 flex items-center gap-16">
+            <div class="col-span-9 flex items-center gap-16 font-serif">
                 <router-link
                 :to="{name:'homePage'}"
                 class="col-span-2 flex gap-4 w-fit hover:text-white hover:font-medium">

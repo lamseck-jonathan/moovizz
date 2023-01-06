@@ -12,7 +12,7 @@
                         :src="getImage(movie.poster_path)" 
                     />
                 </div>
-                <div class="relative flex flex-col">
+                <div class="relative flex flex-col pt-24 md:pt-0">
                     <div class="grid grid-cols-12 px-10 gap-8">
                         <img 
                             class="rounded-lg col-span-12 md:col-span-4 hidden md:block"
