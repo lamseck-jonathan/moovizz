@@ -68,6 +68,14 @@ export async function searchMovies(keyword){
     return result;
 }
 
-export function getImage(path){
+export function getPosterImagePm(path){
+    return 'https://image.tmdb.org/t/p/w342/'+path
+}
+
+export function getPosterImageGm(path){
     return 'https://image.tmdb.org/t/p/original/'+path
+}
+
+export function getBackdropImage(path){
+    return 'https://image.tmdb.org/t/p/w1280/'+path
 }

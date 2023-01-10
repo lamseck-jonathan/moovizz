@@ -10,13 +10,13 @@
     >
         <img 
             class="rounded-lg shadow-xl" 
-            :src="getImage(props.movie.poster_path)"
+            :src="getPosterImagePm(props.movie.poster_path)"
         />
     </div>
 </template>
 
 <script setup>
-import { getImage } from '@/data/MovieDb.js'
+import { getPosterImagePm } from '@/data/MovieDb.js'
 import {gsap} from 'gsap'
 import { useRouter } from 'vue-router'
 

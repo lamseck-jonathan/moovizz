@@ -6,10 +6,10 @@
         <div key="2" v-else>
             <div class="min-h-screen flex justify-center md:items-center overflow-hidden bg">
                 <div class="absolute opacity-50 bg-netflix w-full h-fit object-fill">
-                    <img class="hidden md:block" :src="getImage(movie.backdrop_path)"/>
+                    <img class="hidden md:block" :src="getBackdropImage(movie.backdrop_path)"/>
                     <img 
                         class="md:col-span-3 block md:hidden object-fill"
-                        :src="getImage(movie.poster_path)" 
+                        :src="getPosterImageGm(movie.poster_path)" 
                     />
                 </div>
                 <div class="relative flex flex-col pt-24 md:pt-0">
@@ -17,7 +17,7 @@
                         <img 
                             class="rounded-lg col-span-12 md:col-span-4 hidden md:block"
                             style="min-width:250px;width:300px; height:400px" 
-                            :src="getImage(movie.poster_path)" 
+                            :src="getPosterImageGm(movie.poster_path)" 
                         />
                         <div class="text-white px-4 md:col-span-8 col-span-12">
                             <p class="text-white font-semibold text-3xl">
@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { getDetailsMovie,getImage,getSimilarMovies } from '@/data/MovieDb.js'
+import { getDetailsMovie,getPosterImageGm,getSimilarMovies } from '@/data/MovieDb.js'
 import {emptyMovie} from '@/data/movies.js'
 import {ref,onBeforeMount,watch} from 'vue'
 import ButtonIcon from '@/components/ButtonIcon.vue';
@@ -95,6 +95,7 @@ import { useRoute } from 'vue-router';
 import TransitionFade from '../components/TransitionFade.vue';
 import moment from 'moment'
 import LoadingCircle from '@/components/LoadingCircle.vue';
+import { getBackdropImage } from '../data/MovieDb';
 
 const movie = ref(emptyMovie)
 const similarMovies = ref()
@@ -114,7 +115,6 @@ async function fetchMovieData(id){
     await getSimilarMovies(id).then((res) => {
         console.log('similar',res.data.results)
         similarMovies.value = res.data.results
-        
     })
     setTimeout(() => {loading.value = false},2000)
 }
