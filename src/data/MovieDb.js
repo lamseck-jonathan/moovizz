@@ -77,5 +77,5 @@ export function getPosterImageGm(path){
 }
 
 export function getBackdropImage(path){
-    return 'https://image.tmdb.org/t/p/w1280/'+path
+    return 'https://image.tmdb.org/t/p/original/'+path
 }
